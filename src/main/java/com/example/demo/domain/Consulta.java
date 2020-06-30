@@ -3,15 +3,35 @@ package com.example.demo.domain;
 import java.io.Serializable;
 import java.util.Date;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
+@Entity
 public class Consulta implements Serializable{
 	
 	private static final long serialVersionUID = 1L;
 	
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 	private Date data;
 	private String end;
 	private String procedimento;
+	
+	@ManyToOne
+	@JoinColumn(name = "animal_id")
+	@JsonIgnore
 	private Animal animal;
+	
+	@ManyToOne
+	@JoinColumn(name = "veterinario_id")
+	@JsonIgnore
 	private Veterinario veterinario;
 	
 	public Consulta() {
