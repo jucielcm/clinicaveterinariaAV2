@@ -21,7 +21,7 @@ public class AnimalController {
 	
 	@GetMapping
 	public ResponseEntity<List<Animal>> list() {
-		List<Animal> animais = animalService.list();
+		List<Animal> animais = animalService.List();
 		
 		return ResponseEntity.ok(animais);
 	}
